@@ -13,7 +13,10 @@ async function getPosts(req, res) {
 async function getPost(req, res) {
   const id = req.params.id;
   const post = await model.getPost(id);
-  res.render("adminEditPost", post);
+  res.render("adminEditPost", {
+    title: post.title,
+    content: JSON.stringify(post.content),
+  });
 }
 
 function newPost(req, res) {
@@ -35,7 +38,6 @@ async function deletePost(req, res) {
 async function updatePost(req, res) {
   const post = req.body;
   const id = req.params.id;
-  console.log(id, post);
   await model.updatePost(id, post);
   return res.json(post);
 }

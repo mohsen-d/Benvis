@@ -5,11 +5,16 @@ var editor = new Quill("#editor-container", {
   theme: "snow",
 });
 
+if (content) {
+  editor.setContents(content);
+}
+
 async function updatePost() {
-  const content = editor.getContents().ops[0].insert;
+  const content = editor.getContents().ops;
+  const text = editor.getText();
   const title = document.getElementById("title").value;
 
-  const data = { content, title };
+  const data = { content, text, title };
 
   const btn = document.getElementById("updateBtn");
 
@@ -27,10 +32,11 @@ async function updatePost() {
 }
 
 async function addPost() {
-  const content = editor.getContents().ops[0].insert;
+  const content = editor.getContents().ops;
+  const text = editor.getText();
   const title = document.getElementById("title").value;
 
-  const data = { content, title };
+  const data = { content, text, title };
 
   const btn = document.getElementById("addBtn");
 

@@ -23,7 +23,7 @@ async function addPost(post) {
   const data = JSON.parse(fileContent);
   data.lastId += 1;
   data.posts.push({
-    [data.lastId]: `${post.title}##${post.content.substring(0, 50)}`,
+    [data.lastId]: `${post.title}##${post.text.substring(0, 50)}`,
   });
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
 
@@ -52,7 +52,7 @@ async function updatePost(id, post) {
 
   const postIndex = data.posts.findIndex((p) => p.hasOwnProperty(id));
   data.posts.splice(postIndex, 1, {
-    [id]: `${post.title}##${post.content.substring(0, 50)}`,
+    [id]: `${post.title}##${post.text.substring(0, 50)}`,
   });
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
 
