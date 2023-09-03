@@ -1,0 +1,8 @@
+<ul>
+  {{#each posts}}
+    <li>
+      <a href="/admin/posts/{{this.id}}">{{this.title}}</a>
+      <br />
+      {{this.content}}</li>
+  {{/each}}
+</ul>
