@@ -5,6 +5,32 @@ var editor = new Quill("#editor-container", {
   theme: "snow",
 });
 
+// Handlers can also be added post initialization
+var toolbar = editor.getModule("toolbar");
+toolbar.addHandler("image", showImageUI);
+
+function showImageUI() {
+  const tooltip = editor.theme.tooltip;
+  const originalSave = tooltip.save;
+  const originalHide = tooltip.hide;
+
+  tooltip.save = function () {
+    const range = editor.getSelection(true);
+    const value = this.textbox.value;
+    if (value) {
+      editor.insertEmbed(range.index, "image", value, "user");
+    }
+  };
+  // Called on hide and save.
+  tooltip.hide = function () {
+    tooltip.save = originalSave;
+    tooltip.hide = originalHide;
+    tooltip.hide();
+  };
+  tooltip.edit("image");
+  tooltip.textbox.placeholder = "Embed URL";
+}
+
 if (content) {
   editor.setContents(content);
 }
