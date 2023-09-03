@@ -7,7 +7,7 @@ async function getPosts(req, res) {
     const [title, content] = p[id].split("##");
     return { id, title, content };
   });
-  return res.render("adminPostsList", { posts });
+  return res.render("adminPostsList", { title: "Posts", posts });
 }
 
 async function getPost(req, res) {
@@ -20,7 +20,7 @@ async function getPost(req, res) {
 }
 
 function newPost(req, res) {
-  res.render("adminNewPost");
+  res.render("adminNewPost", { title: "New Post" });
 }
 
 async function addPost(req, res) {
