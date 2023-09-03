@@ -7,3 +7,7 @@
 .card:hover .card-link {
   visibility: visible !important;
 }
+
+#back-link {
+  margin-left: -32px;
+}
