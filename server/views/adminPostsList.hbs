@@ -1,8 +1,23 @@
-<ul>
-  {{#each posts}}
-    <li>
-      <a href="/admin/posts/{{this.id}}">{{this.title}}</a>
-      <br />
-      {{this.content}}</li>
-  {{/each}}
-</ul>
+<div class="row">
+  <div class="col-12">
+    <h1>POSTS</h1>
+    <div id="posts-list" class="row g-3">
+      {{#each posts}}
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}}</h5>
+              <p class="card-text">
+                {{this.content}}
+              </p>
+              <a
+                href="/admin/posts/{{this.id}}"
+                class="card-link invisible float-end"
+              ><i class="bi bi-pencil-square"></i></a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
