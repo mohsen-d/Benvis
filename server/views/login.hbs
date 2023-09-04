@@ -1,0 +1,46 @@
+<div class="row vh-100 d-flex align-items-center">
+  <div class="col-4 offset-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Login</h5>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="username"
+              id="username"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="password"
+              id="password"
+            />
+          </div>
+          <div>
+            <input
+              type="button"
+              class="btn btn-outline-success"
+              value="Login"
+              onclick="login()"
+            />
+
+            <input
+              type="button"
+              class="btn btn-outline-secondary"
+              value="Cancel"
+              onclick="cancel()"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="http://localhost:3000/scripts.js"></script>
