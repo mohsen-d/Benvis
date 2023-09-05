@@ -1,38 +1,42 @@
-var editor = new Quill("#editor-container", {
-  modules: {
-    toolbar: "#toolbar-container",
-  },
-  theme: "snow",
-});
+let editor;
 
-// Handlers can also be added post initialization
-var toolbar = editor.getModule("toolbar");
-toolbar.addHandler("image", showImageUI);
+function setupEditor() {
+  editor = new Quill("#editor-container", {
+    modules: {
+      toolbar: "#toolbar-container",
+    },
+    theme: "snow",
+  });
 
-function showImageUI() {
-  const tooltip = editor.theme.tooltip;
-  const originalSave = tooltip.save;
-  const originalHide = tooltip.hide;
+  // Handlers can also be added post initialization
+  var toolbar = editor.getModule("toolbar");
+  toolbar.addHandler("image", showImageUI);
 
-  tooltip.save = function () {
-    const range = editor.getSelection(true);
-    const value = this.textbox.value;
-    if (value) {
-      editor.insertEmbed(range.index, "image", value, "user");
-    }
-  };
-  // Called on hide and save.
-  tooltip.hide = function () {
-    tooltip.save = originalSave;
-    tooltip.hide = originalHide;
-    tooltip.hide();
-  };
-  tooltip.edit("image");
-  tooltip.textbox.placeholder = "Embed URL";
-}
+  function showImageUI() {
+    const tooltip = editor.theme.tooltip;
+    const originalSave = tooltip.save;
+    const originalHide = tooltip.hide;
 
-if (content) {
-  editor.setContents(content);
+    tooltip.save = function () {
+      const range = editor.getSelection(true);
+      const value = this.textbox.value;
+      if (value) {
+        editor.insertEmbed(range.index, "image", value, "user");
+      }
+    };
+    // Called on hide and save.
+    tooltip.hide = function () {
+      tooltip.save = originalSave;
+      tooltip.hide = originalHide;
+      tooltip.hide();
+    };
+    tooltip.edit("image");
+    tooltip.textbox.placeholder = "Embed URL";
+  }
+
+  if (typeof content !== "undefined") {
+    editor.setContents(content);
+  }
 }
 
 async function updatePost() {
@@ -88,6 +92,27 @@ async function deletePost() {
   });
 
   window.location.href = "./";
+}
+
+async function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  const data = { username, password };
+
+  const btn = document.getElementById("login");
+
+  btn.setAttribute("value", "SENDING...");
+  btn.setAttribute("disabled", "true");
+
+  const response = await fetch(`http://localhost:3000/auth/login`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) window.location.href = "/admin/posts";
+  else console.log(response.data.error);
 }
 
 function cancel() {
