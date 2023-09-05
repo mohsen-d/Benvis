@@ -1,4 +1,5 @@
 const model = require("../models/auth.model");
+const jwt = require("jsonwebtoken");
 
 function getLogin(req, res) {
   return res.render("login");
@@ -13,9 +14,18 @@ async function login(req, res) {
       error: "invalid username or password",
     });
 
-  return res.json({
-    username: user.username,
-  });
+  const token = jwt.sign({ username: user.username }, "124");
+
+  return res
+    .header(
+      "Set-Cookie",
+      `auth_token=${token}; HttpOnly; SameSite=Strict; path=/; Max-Age=${
+        30 * 60
+      }`
+    )
+    .json({
+      token,
+    });
 }
 
 module.exports = {
