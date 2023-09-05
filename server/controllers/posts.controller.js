@@ -7,7 +7,11 @@ async function getPosts(req, res) {
     const [title, content] = p[id].split("##");
     return { id, title, content };
   });
-  return res.render("adminPostsList", { title: "Posts", posts });
+  return res.render("adminPostsList", {
+    user: req.user,
+    title: "Posts",
+    posts,
+  });
 }
 
 async function getPost(req, res) {
