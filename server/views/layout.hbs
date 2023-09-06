@@ -13,8 +13,25 @@
     <link href="/style.css" rel="stylesheet" />
   </head>
   <body>
+    <nav class="navbar text-bg-dark">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">Navbar</a>
+        <div class="float-end d-flex align-items-center">
+          Welcome
+          {{user}}
+          &nbsp;
+          <a
+            href="/auth/logout"
+            id="logout-link"
+            class="nav-link text-white"
+            onclick="logout(event)"
+          ><i class="bi bi-box-arrow-right"></i></a>
+        </div>
+      </div>
+    </nav>
     <div class="container min-vh-100">
       {{{body}}}
     </div>
+    <script src="/auth.js"></script>
   </body>
 </html>

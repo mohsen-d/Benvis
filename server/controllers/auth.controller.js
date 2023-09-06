@@ -28,7 +28,17 @@ async function login(req, res) {
     });
 }
 
+function logout(req, res) {
+  return res
+    .header(
+      "Set-Cookie",
+      `auth_token=invalid; HttpOnly; SameSite=Strict; path=/; Max-Age=-1`
+    )
+    .redirect("/auth/login");
+}
+
 module.exports = {
   getLogin,
   login,
+  logout,
 };
