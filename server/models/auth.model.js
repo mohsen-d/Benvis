@@ -8,6 +8,16 @@ async function getUser() {
   return JSON.parse(data).creds;
 }
 
+async function changePassword(newPassword) {
+  const fileContent = await fs.readFile(dataPath, "utf-8");
+  const data = JSON.parse(fileContent);
+
+  data.creds.password = newPassword;
+
+  await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
+}
+
 module.exports = {
   getUser,
+  changePassword,
 };

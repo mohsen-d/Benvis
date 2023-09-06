@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col">
+    <div class="d-flex align-items-center">
+      <a href="/admin/posts" id="back-link" class="fs-2 pt-2"><i
+          class="bi bi-arrow-left-short"
+        ></i></a>
+      <h1 class="my-3">{{user}} Profile</h1></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h3>Change Passowrd</h3>
+    <div class="mb-4">
+      <label for="currentPassword" class="form-label">Current Password</label>
+      <input type="password" class="form-control" id="currentPassword" />
+    </div>
+    <div class="mb-4">
+      <label for="newPassword" class="form-label">New Password</label>
+      <input type="password" class="form-control" id="newPassword" />
+    </div>
+    <div class="mb-4">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" />
+    </div>
+    <div>
+      <input
+        type="button"
+        class="btn btn-outline-success"
+        id="changeBtn"
+        value="CHANGE"
+        onclick="changePassword()"
+      />
+      <input
+        type="button"
+        class="btn btn-outline-secondary"
+        id="cancelBtn"
+        value="CANCEL"
+        onclick="cancel()"
+      />
+    </div>
+  </div>
+</div>
+<script src="http://localhost:3000/profile.js"></script>

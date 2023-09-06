@@ -1,11 +1,8 @@
 const express = require("express");
 
 const controller = require("../../controllers/posts.controller");
-const authMiddleware = require("../../middlewares/auth.middleware");
 
 const route = express.Router();
-
-route.use(authMiddleware);
 
 // APIs
 route.post("/", controller.addPost);
