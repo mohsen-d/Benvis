@@ -5,7 +5,7 @@ const controller = require("../../controllers/profile.controller");
 const route = express.Router();
 
 // APIs
-route.put("/changepassword", controller.changePassword);
+route.put("/password", controller.changePassword);
 
 // Pages
 route.get("/", controller.getProfile);

@@ -15,14 +15,11 @@ async function changePassword() {
   btn.setAttribute("value", "CHANGING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(
-    `http://localhost:3000/admin/profile/changepassword`,
-    {
-      method: "put",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }
-  );
+  const response = await fetch(`http://localhost:3000/admin/profile/password`, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
   if (response.ok) {
     console.log("password changed successfully");
