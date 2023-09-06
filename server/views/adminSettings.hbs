@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col">
+    <div class="d-flex align-items-center">
+      <a href="/admin/posts" id="back-link" class="fs-2 pt-2"><i
+          class="bi bi-arrow-left-short"
+        ></i></a>
+      <h1 class="my-3">Site Settings</h1></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="mb-4">
+      <label for="siteTitle" class="form-label">Site Title</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{siteSettings.title}}"
+        id="siteTitle"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="siteDesc" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{siteSettings.description}}"
+        id="siteDesc"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="siteFooter" class="form-label">Site Footer</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{siteSettings.footer}}"
+        id="siteFooter"
+      />
+    </div>
+    <div>
+      <input
+        type="button"
+        class="btn btn-outline-success"
+        id="updateBtn"
+        value="UPDATE"
+        onclick="updateSettings()"
+      />
+      <input
+        type="button"
+        class="btn btn-outline-secondary"
+        id="cancelBtn"
+        value="CANCEL"
+        onclick="cancel()"
+      />
+    </div>
+  </div>
+</div>
+<script src="http://localhost:3000/settings.js"></script>
