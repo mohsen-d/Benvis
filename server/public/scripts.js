@@ -93,7 +93,3 @@ async function deletePost() {
 
   window.location.href = "./";
 }
-
-function cancel() {
-  window.location.href = "./";
-}
