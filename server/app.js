@@ -8,6 +8,7 @@ const postsAdminRoutes = require("./routes/admin/posts.route");
 const adminProfileRoutes = require("./routes/admin/profile.route");
 const settingsRoutes = require("./routes/admin/settings.route");
 const authRoutes = require("./routes/auth.route");
+const postsRoutes = require("./routes/posts.route");
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use("/admin/posts", postsAdminRoutes);
 app.use("/admin/profile", adminProfileRoutes);
 app.use("/admin/settings", settingsRoutes);
 app.use("/auth", authRoutes);
+app.use("/posts", postsRoutes);
 
 module.exports = app;

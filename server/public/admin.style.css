@@ -1,0 +1,21 @@
+#editor-container {
+  height: 300px;
+}
+.card:hover {
+  border-color: dodgerblue;
+}
+.card:hover .card-link {
+  visibility: visible !important;
+}
+
+#back-link {
+  margin-left: -32px;
+}
+
+#new-card {
+  height: 122px;
+}
+
+#logout-link {
+  padding-top: 2px;
+}

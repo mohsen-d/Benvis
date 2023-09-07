@@ -1,3 +1,5 @@
+var QuillConverter = require("quill-delta-to-html").QuillDeltaToHtmlConverter;
+
 const model = require("../models/post.model");
 
 async function getPosts(req, res) {
@@ -7,7 +9,17 @@ async function getPosts(req, res) {
     const [title, content] = p[id].split("##");
     return { id, title, content };
   });
-  return res.render("adminPostsList", {
+
+  let viewToRender = "adminPostsList";
+  let layout = "layout";
+
+  if (!req.baseUrl.startsWith("/admin")) {
+    viewToRender = "posts";
+    layout = "layouts/public";
+  }
+
+  return res.render(viewToRender, {
+    layout: layout,
     user: req.user,
     title: "Posts",
     posts,
@@ -17,9 +29,21 @@ async function getPosts(req, res) {
 async function getPost(req, res) {
   const id = req.params.id;
   const post = await model.getPost(id);
-  res.render("adminEditPost", {
+
+  let viewToRender = "adminEditPost";
+  let content = JSON.stringify(post.content);
+  let layout = "layout";
+
+  if (!req.baseUrl.startsWith("/admin")) {
+    viewToRender = "post";
+    content = convertContentToHtml(post.content);
+    layout = "layouts/public";
+  }
+
+  res.render(viewToRender, {
+    layout: layout,
     title: post.title,
-    content: JSON.stringify(post.content),
+    content,
   });
 }
 
@@ -46,6 +70,10 @@ async function updatePost(req, res) {
   return res.json(post);
 }
 
+function convertContentToHtml(content) {
+  var converter = new QuillConverter(content, { encodeHtml: false });
+  return converter.convert();
+}
 module.exports = {
   getPosts,
   getPost,
