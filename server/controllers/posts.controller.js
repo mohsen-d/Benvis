@@ -11,7 +11,7 @@ async function getPosts(req, res) {
   });
 
   let viewToRender = "adminPostsList";
-  let layout = "layout";
+  let layout = "layouts/admin";
 
   if (!req.baseUrl.startsWith("/admin")) {
     viewToRender = "posts";
@@ -32,7 +32,7 @@ async function getPost(req, res) {
 
   let viewToRender = "adminEditPost";
   let content = JSON.stringify(post.content);
-  let layout = "layout";
+  let layout = "layouts/admin";
 
   if (!req.baseUrl.startsWith("/admin")) {
     viewToRender = "post";
@@ -48,7 +48,7 @@ async function getPost(req, res) {
 }
 
 function newPost(req, res) {
-  res.render("adminNewPost", { title: "New Post" });
+  res.render("adminNewPost", { title: "New Post", layout: "layouts/admin" });
 }
 
 async function addPost(req, res) {
@@ -74,6 +74,7 @@ function convertContentToHtml(content) {
   var converter = new QuillConverter(content, { encodeHtml: false });
   return converter.convert();
 }
+
 module.exports = {
   getPosts,
   getPost,

@@ -2,7 +2,7 @@ const model = require("../models/auth.model");
 const jwt = require("jsonwebtoken");
 
 function getLogin(req, res) {
-  return res.render("login");
+  return res.render("login", { layout: "layouts/public" });
 }
 
 async function login(req, res) {

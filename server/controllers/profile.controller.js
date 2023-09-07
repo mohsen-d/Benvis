@@ -2,6 +2,7 @@ const model = require("../models/auth.model");
 
 function getProfile(req, res) {
   res.render("adminProfile", {
+    layout: "layouts/admin",
     user: req.user,
     title: "Profile",
   });
