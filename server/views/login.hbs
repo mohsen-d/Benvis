@@ -1,47 +1,65 @@
-<div class="row vh-100 d-flex align-items-center">
-  <div class="col-4 offset-4">
-    <div class="card">
-      <div class="card-header">
-        <h5>Login</h5>
-      </div>
-      <div class="card-body">
-        <div class="card-text">
-          <div class="mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="username"
-              id="username"
-            />
-          </div>
-          <div class="mb-3">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="password"
-              id="password"
-            />
-          </div>
-          <div>
-            <input
-              type="button"
-              id="login"
-              class="btn btn-outline-success"
-              value="Login"
-              onclick="login()"
-            />
+<html>
+  <head>
+    <title>{{@siteSettings.title}} | {{title}}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link href="/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container min-vh-100">
+      <div class="row vh-100 d-flex align-items-center">
+        <div class="col-4 offset-4">
+          <div class="card">
+            <div class="card-header">
+              <h5>Admin Panel</h5>
+            </div>
+            <div class="card-body">
+              <div class="card-text">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="username"
+                    id="username"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="password"
+                    id="password"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="button"
+                    id="login"
+                    class="btn btn-outline-success"
+                    value="Login"
+                    onclick="login()"
+                  />
 
-            <input
-              type="button"
-              class="btn btn-outline-secondary"
-              value="Cancel"
-              onclick="cancel()"
-            />
+                  <input
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    value="Cancel"
+                    onclick="cancel()"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </body>
+  <script src="/auth.js"></script>
 
-<script src="http://localhost:3000/scripts.js"></script>
+</html>
