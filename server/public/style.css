@@ -8,3 +8,6 @@
 a.post-title {
   text-decoration: none;
 }
+.back-link {
+  margin-left: -32px;
+}
