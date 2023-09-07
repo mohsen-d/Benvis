@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>{{@siteSettings.title}} | {{title}}</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,10 +17,10 @@
         <div
           class="col-6 offset-3 mb-5 mt-3 pb-3 border-bottom border-secondary-subtle"
         >
-          <h1 class="site-title d-inline px-1 pb-1">My Coding Blog</h1>
+          <h1 class="site-title d-inline px-1 pb-1">{{@siteSettings.title}}</h1>
           <h2
             class="text-body-tertiary fst-italic fw-light fs-3 mt-1"
-          >Everything About Javascript</h2>
+          >{{@siteSettings.description}}</h2>
         </div>
       </div>
       {{{body}}}

@@ -1,6 +1,12 @@
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+var hbs = require("hbs");
+
+const app = express();
+
+hbs.localsAsTemplateData(app);
+require("./startup/settings.startup")(app);
 
 const authMiddleware = require("./middlewares/auth.middleware");
 
@@ -9,8 +15,6 @@ const adminProfileRoutes = require("./routes/admin/profile.route");
 const settingsRoutes = require("./routes/admin/settings.route");
 const authRoutes = require("./routes/auth.route");
 const postsRoutes = require("./routes/posts.route");
-
-const app = express();
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, ".", "views"));

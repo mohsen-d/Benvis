@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Admin | {{title}}</title>
+    <title>{{@siteSettings.title}} | Admin Panel</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,10 +15,11 @@
   <body>
     <nav class="navbar text-bg-dark">
       <div class="container">
-        <a class="navbar-brand text-white" href="#">Navbar</a>
+        <a class="navbar-brand text-white" href="#">{{@siteSettings.title}}
+          | Admin Panel</a>
         <div class="float-end d-flex align-items-center">
           <span>Welcome&nbsp;</span>
-          <a class="nav-link text-warning" href="/admin/profile">{{user}}</a>
+          <a class="nav-link text-warning" href="/admin/profile">{{@user}}</a>
           &nbsp;
           <a href="/admin/settings" class="nav-link text-white"><i
               class="bi bi-gear"
