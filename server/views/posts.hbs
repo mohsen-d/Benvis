@@ -1,16 +1,12 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    {{#each posts}}
-      <article class="mb-5">
-        <header>
-          <h4 class="fw-bold">
-            <a class="post-title" href="/posts/{{this.id}}">{{this.title}}</a>
-          </h4>
-        </header>
-        <section>
-          <p>{{this.content}}</p>
-        </section>
-      </article>
-    {{/each}}
-  </div>
-</div>
+{{#each posts}}
+  <article class="mb-5">
+    <header>
+      <h4 class="fw-bold">
+        <a class="post-title" href="/posts/{{this.id}}">{{this.title}}</a>
+      </h4>
+    </header>
+    <section>
+      <p>{{this.content}}</p>
+    </section>
+  </article>
+{{/each}}

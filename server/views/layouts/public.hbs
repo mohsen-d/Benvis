@@ -12,7 +12,7 @@
     <link href="/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container min-vh-100">
+    <div class="container min-vh-100 d-flex flex-column">
       <div class="row">
         <div
           class="col-6 offset-3 mb-5 mt-3 pb-3 border-bottom border-secondary-subtle"
@@ -23,12 +23,16 @@
           >{{@siteSettings.description}}</h2>
         </div>
       </div>
-      {{{body}}}
+      <div class="row flex-grow-1">
+        <div class="col-6 offset-3">
+          {{{body}}}
+        </div>
+      </div>
       <div class="row">
         <div class="col-6 offset-3">
           <footer>
             <p
-              class="text-center mt-2 pt-4 mb-4 border-top border-body-tertiary"
+              class="text-center mt-2 pt-4 mb-4 border-top border-body-tertiary text-body-tertiary"
             >{{@siteSettings.footer}}</p>
           </footer>
         </div>

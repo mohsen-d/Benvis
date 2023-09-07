@@ -1,21 +1,17 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <main>
-      <header>
-        <div class="d-flex align-items-center">
-          <a href="/posts" class="back-link text-body-tertiary fs-2">
-            <i class="bi bi-arrow-left-short"></i>
-          </a>
-          <h3 class="post-title">{{title}}</h3>
-        </div>
-        <div class="text-body-tertiary fs-6">
-          <i class="bi bi-calendar4-week"></i>
-          <time datetime="{{date}}">{{date}}</time>
-        </div>
-      </header>
-      <section class="lh-lg mt-2 fs-5 fw-light">
-        {{{content}}}
-      </section>
-    </main>
-  </div>
-</div>
+<main>
+  <header>
+    <div class="d-flex align-items-center">
+      <a href="/posts" class="back-link text-body-tertiary fs-2">
+        <i class="bi bi-arrow-left-short"></i>
+      </a>
+      <h3 class="post-title">{{title}}</h3>
+    </div>
+    <div class="text-body-tertiary fs-6">
+      <i class="bi bi-calendar4-week"></i>
+      <time datetime="{{date}}">{{date}}</time>
+    </div>
+  </header>
+  <section class="lh-lg mt-2 fs-5 fw-light">
+    {{{content}}}
+  </section>
+</main>
