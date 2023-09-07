@@ -43,6 +43,12 @@ async function getPost(req, res) {
   res.render(viewToRender, {
     layout: layout,
     title: post.title,
+    date: new Date(post.date).toLocaleDateString("en-us", {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
     content,
   });
 }
