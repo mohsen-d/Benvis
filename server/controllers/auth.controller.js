@@ -1,5 +1,7 @@
-const model = require("../models/auth.model");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+const model = require("../models/auth.model");
 
 function getLogin(req, res) {
   return res.render("login");
@@ -9,7 +11,14 @@ async function login(req, res) {
   const { username, password } = req.body;
   const user = await model.getUser();
 
-  if (username !== user.username || password !== user.password)
+  if (username !== user.username)
+    return res.status(401).json({
+      error: "invalid username or password",
+    });
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid)
     return res.status(401).json({
       error: "invalid username or password",
     });

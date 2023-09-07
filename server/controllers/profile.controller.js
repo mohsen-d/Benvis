@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 const model = require("../models/auth.model");
 
 function getProfile(req, res) {
@@ -13,12 +15,18 @@ async function changePassword(req, res) {
 
   const user = await model.getUser();
 
-  if (currentPassword !== user.password)
+  const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
+
+  if (!isPasswordValid)
     return res.status(401).json({
       error: "invalid password",
     });
 
-  await model.changePassword(newPassword);
+  const salt = await bcrypt.genSalt(10);
+  const passwordHash = await bcrypt.hash(newPassword, salt);
+
+  await model.changePassword(passwordHash);
+
   return res.sendStatus(200);
 }
 
