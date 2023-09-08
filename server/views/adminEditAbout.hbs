@@ -1,0 +1,143 @@
+<div class="row">
+  <div class="col">
+    <div class="d-flex align-items-center">
+      <a href="/admin/posts" id="back-link" class="fs-2 pt-2"><i
+          class="bi bi-arrow-left-short"
+        ></i></a>
+      <h1 class="my-3">About Me</h1></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <form class="row" id="aboutForm">
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.name}}"
+            name="name"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="position" class="form-label">Position</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.position}}"
+            name="position"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.email}}"
+            name="email"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="linkedin" class="form-label">Linkedin</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.linkedin}}"
+            name="linkedin"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="twitter" class="form-label">Twitter</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.twitter}}"
+            name="twitter"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="stackoverflow" class="form-label">Stackoverflow</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.stackoverflow}}"
+            name="stackoverflow"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="github" class="form-label">Github</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.github}}"
+            name="github"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-4">
+          <label for="instagram" class="form-label">Instagram</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.links.instagram}}"
+            name="instagram"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="mb-4">
+          <label for="image" class="form-label">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            value="{{info.image}}"
+            name="image"
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="mb-4">
+          <label for="bio" class="form-label">A Short Bio</label>
+          <textarea
+            class="form-control"
+            name="bio"
+            rows="5"
+          >{{info.bio}}</textarea>
+        </div>
+      </div>
+      <div class="col-12">
+        <div>
+          <input
+            type="button"
+            class="btn btn-outline-success"
+            id="updateBtn"
+            value="UPDATE"
+            onclick="updateInfo()"
+          />
+          <input
+            type="button"
+            class="btn btn-outline-secondary"
+            id="cancelBtn"
+            value="CANCEL"
+            onclick="cancel()"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="/about.js"></script>
