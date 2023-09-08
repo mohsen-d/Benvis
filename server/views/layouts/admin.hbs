@@ -15,21 +15,28 @@
   <body>
     <nav class="navbar text-bg-dark">
       <div class="container">
-        <a class="navbar-brand text-white" href="#">{{@siteSettings.title}}
+        <a class="navbar-brand text-white" href="/">{{@siteSettings.title}}
           | Admin Panel</a>
         <div class="float-end d-flex align-items-center">
-          <span>Welcome&nbsp;</span>
-          <a class="nav-link text-warning" href="/admin/profile">{{@user}}</a>
-          &nbsp;
-          <a href="/admin/settings" class="nav-link text-white"><i
-              class="bi bi-gear"
-            ></i></a>&nbsp;
+          <span>Welcome</span>
+          <a
+            class="nav-link text-warning pe-2 ps-1"
+            href="/admin/profile"
+          >{{@user}}</a>
+          <a class="nav-link pe-2 pt-1" href="/admin/about">
+            <i class="bi bi-person-vcard"></i>
+          </a>
+          <a href="/admin/settings" class="nav-link text-white pe-2 pt-1">
+            <i class="bi bi-gear"></i>
+          </a>
           <a
             href="/auth/logout"
             id="logout-link"
             class="nav-link text-white"
             onclick="logout(event)"
-          ><i class="bi bi-box-arrow-right"></i></a>
+          >
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
         </div>
       </div>
     </nav>
