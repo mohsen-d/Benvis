@@ -16,6 +16,7 @@ const adminAboutRoutes = require("./routes/admin/about.route");
 const settingsRoutes = require("./routes/admin/settings.route");
 const authRoutes = require("./routes/auth.route");
 const postsRoutes = require("./routes/posts.route");
+const homeRoutes = require("./routes/home.route");
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, ".", "views"));
@@ -32,5 +33,6 @@ app.use("/admin/about", adminAboutRoutes);
 app.use("/admin/settings", settingsRoutes);
 app.use("/auth", authRoutes);
 app.use("/posts", postsRoutes);
+app.use("/", homeRoutes);
 
 module.exports = app;
