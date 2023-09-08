@@ -23,7 +23,10 @@ async function login(req, res) {
       error: "invalid username or password",
     });
 
-  const token = jwt.sign({ username: user.username }, "124");
+  const token = jwt.sign(
+    { username: user.username },
+    process.env.BENVIS_JWTOKEN
+  );
 
   return res
     .header(
