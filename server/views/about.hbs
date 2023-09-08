@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>{{@siteSettings.title}}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link href="/landing.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mt-5 offset-3 d-flex align-items-center flex-column">
+          {{#if info.image}}
+            <div
+              class="my-avatar rounded-circle border border-light-subtle overflow-hidden"
+            >
+              <img class="img-fluid" src="{{info.image}}" />
+            </div>
+          {{/if}}
+
+          {{#if info.name}}
+            <div class="my-name">
+              <h1>I'm
+                <span class="fst-italic">{{info.name}}</span></h1>
+            </div>
+          {{/if}}
+
+          {{#if info.position}}
+            <div class="my-position">
+              <h2 class="fw-light">{{info.position}}</h2>
+            </div>
+          {{/if}}
+
+          {{#if info.bio}}
+            <div class="my-bio border-bottom pb-3">
+              <p class="fs-5 fw-light text-secondary">{{info.bio}}</p>
+              <p>
+                <a
+                  href="/posts"
+                  class="fs-4 d-flex justify-content-center align-items-center text-decoration-none"
+                ><span>My Blog</span>
+                  <i class="bi bi-box-arrow-in-right pt-2 ps-1"></i></a></p>
+            </div>
+          {{/if}}
+
+          <div class="my-links fs-5 pt-3">
+            <ul class="list-inline">
+              {{#if info.email}}
+                <li class="list-inline-item">
+                  <a href="mailto:{{info.email}}">
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </li>
+              {{/if}}
+              {{#if info.linkedin}}
+                <li class="list-inline-item">
+                  <a href="{{info.linkedin}}">
+                    <i class="bi bi-linkedin"></i>
+                  </a>
+                </li>
+              {{/if}}
+
+              {{#if info.github}}
+                <li class="list-inline-item">
+                  <a href="{{info.github}}">
+                    <i class="bi bi-github"></i>
+                  </a>
+                </li>
+              {{/if}}
+
+              {{#if info.stackoverflow}}
+                <li class="list-inline-item">
+                  <a href="{{info.stackoverflow}}">
+                    <i class="bi bi-stack-overflow"></i>
+                  </a>
+                </li>
+              {{/if}}
+
+              {{#if info.twitter}}
+                <li class="list-inline-item">
+                  <a href="{{info.twitter}}">
+                    <i class="bi bi-twitter"></i>
+                  </a>
+                </li>
+              {{/if}}
+
+              {{#if info.instagram}}
+                <li class="list-inline-item">
+                  <a href="{{info.instagram}}">
+                    <i class="bi bi-instagram"></i>
+                  </a>
+                </li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

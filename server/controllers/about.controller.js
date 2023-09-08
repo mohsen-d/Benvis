@@ -8,7 +8,7 @@ async function getInfo(req, res) {
 
   if (!req.baseUrl.startsWith("/admin")) {
     viewToRender = "about";
-    layout = "layouts/public";
+    layout = "";
   }
 
   res.render(viewToRender, {
