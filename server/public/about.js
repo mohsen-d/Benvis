@@ -14,10 +14,7 @@ async function updateInfo() {
     body: JSON.stringify(data),
   });
 
-  if (response.ok) {
-    console.log("about info updated successfully");
-
-    btn.setAttribute("value", "UPDATE");
-    btn.removeAttribute("disabled");
-  } else console.log(response.data.error);
+  window.location.href = response.ok
+    ? "/admin/posts/?from=about"
+    : "/admin/posts/?error=about";
 }

@@ -42,8 +42,66 @@
     </nav>
     <div class="container min-vh-100">
       {{{body}}}
+
+      <!-- Notifications -->
+      {{#if message}}
+        <div
+          class="message-container d-none position-absolute top-0 start-50 translate-middle-x p-3"
+        >
+          <div
+            class="toast message align-items-center text-bg-success border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">
+                {{message}}
+              </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+      <!-- Notifications -->
+      {{#if error}}
+        <div
+          class="error-container d-none position-absolute top-0 start-50 translate-middle-x p-3"
+        >
+          <div
+            class="toast error align-items-center text-bg-danger border-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="d-flex">
+              <div class="toast-body">
+                {{error}}
+              </div>
+              <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+        </div>
+      {{/if}}
     </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    ></script>
     <script src="/auth.js"></script>
     <script src="/utils.js"></script>
+    <script>
+      displayMessage(); displayError();
+    </script>
   </body>
 </html>

@@ -8,3 +8,25 @@ function cancel() {
       console.log(window.location);
   }
 }
+
+function displayMessage() {
+  if (!document.querySelector(".message-container")) {
+    return;
+  }
+
+  if (performance.navigation.type == 0) {
+    document.querySelector(".message-container").classList.remove("d-none");
+    document.querySelector(".message").classList.add("show");
+  }
+}
+
+function displayError() {
+  if (!document.querySelector(".error-container")) {
+    return;
+  }
+
+  if (performance.navigation.type == 0) {
+    document.querySelector(".error-container").classList.remove("d-none");
+    document.querySelector(".error").classList.add("show");
+  }
+}

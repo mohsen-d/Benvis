@@ -16,7 +16,14 @@ async function login() {
   });
 
   if (response.ok) window.location.href = "/admin/posts";
-  else console.log(response.data.error);
+  else {
+    document.querySelector(".toast-body").innerHTML = (
+      await response.json()
+    ).error;
+    displayError();
+    btn.setAttribute("value", "LOGIN");
+    btn.removeAttribute("disabled");
+  }
 }
 
 async function logout(e) {
@@ -27,4 +34,9 @@ async function logout(e) {
   });
 
   if (res.ok) window.location.href = "/auth/login";
+}
+
+function displayError() {
+  document.querySelector(".error-container").classList.remove("d-none");
+  document.querySelector(".error").classList.add("show");
 }

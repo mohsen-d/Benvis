@@ -12,6 +12,8 @@ async function getPosts(req, res) {
 
   let viewToRender = "adminPostsList";
   let layout = "layouts/admin";
+  let message = generateMessage(req);
+  let error = generateError(req);
 
   if (!req.baseUrl.startsWith("/admin")) {
     viewToRender = "posts";
@@ -23,6 +25,8 @@ async function getPosts(req, res) {
     user: req.user,
     title: "Posts",
     posts,
+    message,
+    error,
   });
 }
 
@@ -79,6 +83,35 @@ async function updatePost(req, res) {
 function convertContentToHtml(content) {
   var converter = new QuillConverter(content, { encodeHtml: false });
   return converter.convert();
+}
+
+function generateMessage(req) {
+  if (!req.query.from) {
+    return "";
+  }
+
+  switch (req.query.from) {
+    case "newpost":
+      return "New post added successfully";
+    case "updatepost":
+      return "post updated successfully";
+    case "deletepost":
+      return "post deleted successfully";
+    case "about":
+      return "About details updated successfully";
+    case "settings":
+      return "Site settings updated successfully";
+    case "profile":
+      return "Admin password changed successfully";
+  }
+}
+
+function generateError(req) {
+  if (req.query.error) {
+    return "Something went wrong. Please try again!";
+  }
+
+  return "";
 }
 
 module.exports = {

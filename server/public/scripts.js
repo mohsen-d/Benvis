@@ -8,7 +8,6 @@ function setupEditor() {
     theme: "snow",
   });
 
-  // Handlers can also be added post initialization
   var toolbar = editor.getModule("toolbar");
   toolbar.addHandler("image", showImageUI);
 
@@ -51,14 +50,18 @@ async function updatePost() {
   btn.setAttribute("value", "UPDATING...");
   btn.setAttribute("disabled", "true");
 
-  await fetch(`http://localhost:3000${window.location.pathname}`, {
-    method: "put",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    `http://localhost:3000${window.location.pathname}`,
+    {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }
+  );
 
-  btn.setAttribute("value", "UPDATE");
-  btn.removeAttribute("disabled");
+  window.location.href = response.ok
+    ? "/admin/posts/?from=updatepost"
+    : "/admin/posts/?error=updatepost";
 }
 
 async function addPost() {
@@ -73,13 +76,15 @@ async function addPost() {
   btn.setAttribute("value", "SENDING...");
   btn.setAttribute("disabled", "true");
 
-  await fetch(`http://localhost:3000/admin/posts`, {
+  const response = await fetch(`http://localhost:3000/admin/posts`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
-  window.location.href = "./";
+  window.location.href = response.ok
+    ? "/admin/posts/?from=newpost"
+    : "/admin/posts/?error=newpost";
 }
 
 async function deletePost() {
@@ -87,9 +92,14 @@ async function deletePost() {
   btn.setAttribute("value", "DELETING...");
   btn.setAttribute("disabled", "true");
 
-  await fetch(`http://localhost:3000${window.location.pathname}`, {
-    method: "delete",
-  });
+  const response = await fetch(
+    `http://localhost:3000${window.location.pathname}`,
+    {
+      method: "delete",
+    }
+  );
 
-  window.location.href = "./";
+  window.location.href = response.ok
+    ? "/admin/posts/?from=deletepost"
+    : "/admin/posts/?error=deletepost";
 }

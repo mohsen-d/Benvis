@@ -17,10 +17,7 @@ async function updateSettings() {
     body: JSON.stringify(data),
   });
 
-  if (response.ok) {
-    console.log("settings updated successfully");
-
-    btn.setAttribute("value", "UPDATE");
-    btn.removeAttribute("disabled");
-  } else console.log(response.data.error);
+  window.location.href = response.ok
+    ? "/admin/posts/?from=settings"
+    : "/admin/posts/?error=settings";
 }

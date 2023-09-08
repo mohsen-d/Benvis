@@ -21,10 +21,7 @@ async function changePassword() {
     body: JSON.stringify(data),
   });
 
-  if (response.ok) {
-    console.log("password changed successfully");
-    currentPassword.value = newPassword.value = confirmPassword.value = "";
-    btn.setAttribute("value", "CHANGE");
-    btn.removeAttribute("disabled");
-  } else console.log(response.data.error);
+  window.location.href = response.ok
+    ? "/admin/posts/?from=profile"
+    : "/admin/posts/?error=profile";
 }
