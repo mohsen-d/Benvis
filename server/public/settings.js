@@ -2,8 +2,9 @@ async function updateSettings() {
   const title = document.getElementById("siteTitle").value;
   const description = document.getElementById("siteDesc").value;
   const footer = document.getElementById("siteFooter").value;
+  const landingPage = document.getElementById("landingPage").checked;
 
-  const data = { title, description, footer };
+  const data = { title, description, footer, landingPage };
 
   const btn = document.getElementById("updateBtn");
 

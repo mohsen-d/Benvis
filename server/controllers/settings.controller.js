@@ -1,15 +1,11 @@
 const model = require("../models/settings.model");
 
 async function getSettings(req, res) {
-  const { title, description, footer } = await model.getSettings();
+  const siteSettings = await model.getSettings();
   res.render("adminSettings", {
     layout: "layouts/admin",
     title: "Settings",
-    siteSettings: {
-      title,
-      description,
-      footer,
-    },
+    siteSettings,
   });
 }
 
