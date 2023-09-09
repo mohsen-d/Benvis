@@ -20,7 +20,7 @@ async function getInfo(req, res) {
 
 async function updateInfo(req, res) {
   const newInfo = req.body;
-  console.log(newInfo);
+
   await model.updateInfo(newInfo);
   res.json(newInfo);
 }
