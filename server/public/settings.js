@@ -11,7 +11,7 @@ async function updateSettings() {
   btn.setAttribute("value", "UPDATING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(`http://localhost:3000/admin/settings`, {
+  const response = await fetch(`/admin/settings`, {
     method: "put",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

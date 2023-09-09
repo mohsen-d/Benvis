@@ -50,14 +50,11 @@ async function updatePost() {
   btn.setAttribute("value", "UPDATING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(
-    `http://localhost:3000${window.location.pathname}`,
-    {
-      method: "put",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }
-  );
+  const response = await fetch(`${window.location.pathname}`, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 
   window.location.href = response.ok
     ? "/admin/posts/?from=updatepost"
@@ -76,7 +73,7 @@ async function addPost() {
   btn.setAttribute("value", "SENDING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(`http://localhost:3000/admin/posts`, {
+  const response = await fetch(`/admin/posts`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -92,12 +89,9 @@ async function deletePost() {
   btn.setAttribute("value", "DELETING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(
-    `http://localhost:3000${window.location.pathname}`,
-    {
-      method: "delete",
-    }
-  );
+  const response = await fetch(`${window.location.pathname}`, {
+    method: "delete",
+  });
 
   window.location.href = response.ok
     ? "/admin/posts/?from=deletepost"

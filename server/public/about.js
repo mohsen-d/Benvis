@@ -8,7 +8,7 @@ async function updateInfo() {
   btn.setAttribute("value", "UPDATING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(`http://localhost:3000/admin/about`, {
+  const response = await fetch(`/admin/about`, {
     method: "put",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

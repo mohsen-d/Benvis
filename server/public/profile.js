@@ -15,7 +15,7 @@ async function changePassword() {
   btn.setAttribute("value", "CHANGING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(`http://localhost:3000/admin/profile/password`, {
+  const response = await fetch(`/admin/profile/password`, {
     method: "put",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

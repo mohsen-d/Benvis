@@ -9,7 +9,7 @@ async function login() {
   btn.setAttribute("value", "SENDING...");
   btn.setAttribute("disabled", "true");
 
-  const response = await fetch(`http://localhost:3000/auth/login`, {
+  const response = await fetch(`/auth/login`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
