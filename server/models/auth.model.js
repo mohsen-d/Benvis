@@ -1,7 +1,26 @@
 const fs = require("fs").promises;
 const path = require("path");
+const bcrypt = require("bcrypt");
 
-const dataPath = path.join(__dirname, ".", "data", "auth.json");
+const dataPath = path.join(__dirname, "..", "data", "auth.json");
+
+(async function createFile() {
+  const salt = await bcrypt.genSalt(10);
+  const passwordHash = await bcrypt.hash("", salt);
+
+  const fileContent = {
+    creds: {
+      username: "admin",
+      password: passwordHash,
+    },
+  };
+
+  try {
+    await fs.writeFile(dataPath, JSON.stringify(fileContent, null, 2), {
+      flag: "wx",
+    });
+  } catch {}
+})();
 
 async function getUser() {
   const data = await fs.readFile(dataPath, "utf-8");

@@ -2,6 +2,21 @@ const fs = require("fs").promises;
 const path = require("path");
 
 const dataPath = path.join(__dirname, "..", "data", "posts.json");
+const postsPath = path.join(__dirname, "..", "data", "posts");
+
+(async function createFile() {
+  const fileContent = {
+    lastId: 0,
+    posts: [],
+  };
+
+  try {
+    await fs.mkdir(postsPath);
+    await fs.writeFile(dataPath, JSON.stringify(fileContent, null, 2), {
+      flag: "wx",
+    });
+  } catch {}
+})();
 
 function getPostPath(id) {
   const postFileName = `${id}.json`;
