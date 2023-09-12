@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const dataPath = path.join(__dirname, ".", "settings.json");
+const dataPath = path.join(__dirname, "..", "data", "settings.json");
 
 async function getSettings() {
   const data = await fs.readFile(dataPath, "utf-8");

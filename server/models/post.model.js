@@ -1,11 +1,11 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const dataPath = path.join(__dirname, ".", "data.json");
+const dataPath = path.join(__dirname, "..", "data", "posts.json");
 
 function getPostPath(id) {
   const postFileName = `${id}.json`;
-  return path.join(__dirname, ".", "posts", postFileName);
+  return path.join(__dirname, "..", "data", "posts", postFileName);
 }
 
 async function getPosts() {
