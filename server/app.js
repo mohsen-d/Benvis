@@ -35,4 +35,8 @@ app.use("/auth", authRoutes);
 app.use("/posts", postsRoutes);
 app.use("/", homeRoutes);
 
+app.get("*", (req, res) => {
+  res.render("404", { layout: "layouts/public" });
+});
+
 module.exports = app;
