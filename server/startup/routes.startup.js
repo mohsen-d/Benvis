@@ -6,6 +6,8 @@ const routingMode = process.env.BENVIS_ROUTING_MODE || "normal";
 
 function normalRouting(app) {
   app.use("/admin/", require("../middlewares/auth.middleware"));
+
+  app.use("/admin", require("../routes/admin/home.route"));
   app.use("/admin/posts", require("../routes/admin/posts.route"));
   app.use("/admin/profile", require("../routes/admin/profile.route"));
   app.use("/admin/about", require("../routes/admin/about.route"));
