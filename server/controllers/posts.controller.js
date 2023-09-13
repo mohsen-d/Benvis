@@ -38,7 +38,16 @@ async function getPosts(req, res) {
 
 async function getPost(req, res) {
   const id = req.params.id;
-  const post = await model.getPost(id);
+  let post = {};
+
+  try {
+    post = await model.getPost(id);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return res.redirect("/notfound");
+    }
+    throw error;
+  }
 
   let viewToRender = "adminEditPost";
   let content = JSON.stringify(post.content);
