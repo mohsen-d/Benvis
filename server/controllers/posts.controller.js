@@ -1,6 +1,11 @@
 var QuillConverter = require("quill-delta-to-html").QuillDeltaToHtmlConverter;
 
-const { isAdminRoute } = require("../utils/misc");
+const {
+  isAdminRoute,
+  generateError,
+  generateMessage,
+} = require("../utils/misc");
+
 const model = require("../models/post.model");
 
 async function getPosts(req, res) {
@@ -84,35 +89,6 @@ async function updatePost(req, res) {
 function convertContentToHtml(content) {
   var converter = new QuillConverter(content, { encodeHtml: false });
   return converter.convert();
-}
-
-function generateMessage(req) {
-  if (!req.query.from) {
-    return "";
-  }
-
-  switch (req.query.from) {
-    case "newpost":
-      return "New post added successfully";
-    case "updatepost":
-      return "post updated successfully";
-    case "deletepost":
-      return "post deleted successfully";
-    case "about":
-      return "About details updated successfully";
-    case "settings":
-      return "Site settings updated successfully";
-    case "profile":
-      return "Admin password changed successfully";
-  }
-}
-
-function generateError(req) {
-  if (req.query.error) {
-    return "Something went wrong. Please try again!";
-  }
-
-  return "";
 }
 
 module.exports = {
