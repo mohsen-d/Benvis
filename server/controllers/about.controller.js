@@ -1,4 +1,5 @@
 const model = require("../models/about.model");
+const { isAdminRoute } = require("../utils/misc");
 
 async function getInfo(req, res) {
   const info = await model.getInfo();
@@ -6,7 +7,7 @@ async function getInfo(req, res) {
   let viewToRender = "adminEditAbout";
   let layout = "layouts/admin";
 
-  if (!req.baseUrl.startsWith("/admin")) {
+  if (!isAdminRoute(req)) {
     viewToRender = "about";
     layout = "";
   }

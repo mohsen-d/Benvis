@@ -1,5 +1,6 @@
 var QuillConverter = require("quill-delta-to-html").QuillDeltaToHtmlConverter;
 
+const { isAdminRoute } = require("../utils/misc");
 const model = require("../models/post.model");
 
 async function getPosts(req, res) {
@@ -15,7 +16,7 @@ async function getPosts(req, res) {
   let message = generateMessage(req);
   let error = generateError(req);
 
-  if (!req.baseUrl.startsWith("/admin")) {
+  if (!isAdminRoute(req)) {
     viewToRender = "posts";
     layout = "layouts/public";
   }
@@ -38,7 +39,7 @@ async function getPost(req, res) {
   let content = JSON.stringify(post.content);
   let layout = "layouts/admin";
 
-  if (!req.baseUrl.startsWith("/admin")) {
+  if (!isAdminRoute(req)) {
     viewToRender = "post";
     content = convertContentToHtml(post.content);
     layout = "layouts/public";
