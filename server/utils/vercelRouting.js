@@ -12,16 +12,14 @@ module.exports = function (app, routesPath) {
   const routeDirContent = readAllFiles(routesPath, routesPath);
 
   for (const rf of routeDirContent) {
-    const collectionName = rf.route;
+    const collectionName = rf.route.replace("/home", "");
     const router = require(path.join(rf.dir));
     router.stack.forEach((s) => {
-      const isHome = collectionName.endsWith("home");
-
       const httpMethod = s.route.stack[0].method;
-      const httpPath = isHome ? "/" : collectionName + s.route.path;
+      const httpPath = collectionName + s.route.path;
 
       handlers[httpMethod][httpPath] = {
-        pattern: isHome ? s.regexp : modifyRegex(s.regexp, collectionName),
+        pattern: modifyRegex(s.regexp, collectionName),
         handler: s.route.stack[0].handle,
       };
     });
