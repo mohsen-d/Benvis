@@ -25,7 +25,14 @@ function getPostPath(id) {
 
 async function getPosts() {
   const data = await fs.readFile(dataPath, "utf-8");
-  return JSON.parse(data).posts;
+
+  const posts = JSON.parse(data).posts;
+
+  return posts.map((p) => {
+    const id = Object.keys(p)[0];
+    const [title, brief] = p[id].split("##");
+    return { id, title, brief };
+  });
 }
 
 async function getPost(id) {
@@ -38,7 +45,7 @@ async function addPost(post) {
   const data = JSON.parse(fileContent);
   data.lastId += 1;
   data.posts.push({
-    [data.lastId]: `${post.title}##${post.text.substring(0, 50)}`,
+    [data.lastId]: `${post.title}##${post.text.substring(0, 150)}`,
   });
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
 
@@ -67,7 +74,7 @@ async function updatePost(id, post) {
 
   const postIndex = data.posts.findIndex((p) => p.hasOwnProperty(id));
   data.posts.splice(postIndex, 1, {
-    [id]: `${post.title}##${post.text.substring(0, 50)}`,
+    [id]: `${post.title}##${post.text.substring(0, 150)}`,
   });
   await fs.writeFile(dataPath, JSON.stringify(data, null, 2));
 

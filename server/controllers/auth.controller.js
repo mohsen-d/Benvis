@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const model = require("../models/auth.model");
+const model = require(`../models/${process.env.BENVIS_DB}/auth.model`);
 
 function getLogin(req, res) {
   return res.render("login");

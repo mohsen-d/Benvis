@@ -5,6 +5,7 @@ var hbs = require("hbs");
 const app = express();
 
 hbs.localsAsTemplateData(app);
+require("./startup/db.startup")();
 require("./startup/settings.startup")(app);
 require("./startup/routes.startup")(app);
 

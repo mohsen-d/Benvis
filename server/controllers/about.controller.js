@@ -1,4 +1,4 @@
-const model = require("../models/about.model");
+const model = require(`../models/${process.env.BENVIS_DB}/about.model`);
 const { isAdminRoute } = require("../utils/misc");
 
 async function getInfo(req, res) {

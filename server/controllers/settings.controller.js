@@ -1,4 +1,4 @@
-const model = require("../models/settings.model");
+const model = require(`../models/${process.env.BENVIS_DB}/settings.model`);
 
 async function getSettings(req, res) {
   const siteSettings = await model.getSettings();
