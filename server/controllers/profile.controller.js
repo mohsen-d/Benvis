@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 
-const model = require("../models/auth.model");
+const model = require(`../models/${process.env.BENVIS_DB}/auth.model`);
 
 function getProfile(req, res) {
   res.render("adminProfile", {

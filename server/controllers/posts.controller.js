@@ -6,15 +6,10 @@ const {
   generateMessage,
 } = require("../utils/misc");
 
-const model = require("../models/post.model");
+const model = require(`../models/${process.env.BENVIS_DB}/post.model`);
 
 async function getPosts(req, res) {
-  const data = await model.getPosts();
-  const posts = data.map((p) => {
-    const id = Object.keys(p)[0];
-    const [title, content] = p[id].split("##");
-    return { id, title, content };
-  });
+  const posts = await model.getPosts();
 
   let viewToRender = "adminPostsList";
   let layout = "layouts/admin";
