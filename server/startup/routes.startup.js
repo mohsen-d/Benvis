@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 
 const routingMode = process.env.BENVIS_ROUTING_MODE || "normal";
 
@@ -21,6 +22,7 @@ function vercelRouting(app) {
 }
 
 module.exports = function (app) {
+  app.use(helmet());
   app.use(cookieParser());
   app.use(express.json());
   app.use(express.static(path.join(__dirname, "..", "public")));
