@@ -22,7 +22,21 @@ function vercelRouting(app) {
 }
 
 module.exports = function (app) {
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          "script-src": [
+            "'self'",
+            "'unsafe-inline'",
+            "quilljs.com",
+            "jsdelivr.net",
+          ],
+        },
+      },
+    })
+  );
+
   app.use(cookieParser());
   app.use(express.json());
   app.use(express.static(path.join(__dirname, "..", "public")));
