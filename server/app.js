@@ -5,9 +5,12 @@ var hbs = require("hbs");
 const app = express();
 
 hbs.localsAsTemplateData(app);
-require("./startup/db.startup")();
-require("./startup/settings.startup")(app);
-require("./startup/routes.startup")(app);
+
+(async () => {
+  await require("./startup/db.startup")();
+  await require("./startup/settings.startup")(app);
+  require("./startup/routes.startup")(app);
+})();
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, ".", "views"));
