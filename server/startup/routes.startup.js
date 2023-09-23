@@ -43,6 +43,7 @@ module.exports = function (app) {
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   app.use("/admin/", require("../middlewares/auth.middleware"));
+  app.use(require("../middlewares/cache.middleware"));
 
   switch (routingMode) {
     case "normal":
