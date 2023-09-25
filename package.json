@@ -4,7 +4,8 @@
   "description": "A simple Blog Built by Expressjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-local": "node -r dotenv/config index.js",
+    "start": "node index.js"
   },
   "keywords": [
     "blogging",
@@ -22,5 +23,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.1",
     "quill-delta-to-html": "^0.12.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
   }
 }
