@@ -31,8 +31,19 @@ async function getUser() {
 
 async function changePassword(newPassword) {
   const user = await getUser();
-  user.password = passwordHash(newPassword);
+  user.password = await passwordHash(newPassword);
   await user.save();
+}
+
+async function checkPassword(password) {
+  const user = await getUser();
+  return await bcrypt.compare(password, user.password);
+}
+
+async function checkUser(username, password) {
+  const user = await getUser();
+  if (username !== user.username) return false;
+  return await bcrypt.compare(password, user.password);
 }
 
 async function passwordHash(password) {
@@ -43,4 +54,6 @@ async function passwordHash(password) {
 module.exports = {
   getUser,
   changePassword,
+  checkPassword,
+  checkUser,
 };

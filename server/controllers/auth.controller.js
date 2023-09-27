@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 const model = require(`../models/${process.env.BENVIS_DB}/auth.model`);
 
@@ -9,24 +8,15 @@ function getLogin(req, res) {
 
 async function login(req, res) {
   const { username, password } = req.body;
-  const user = await model.getUser();
 
-  if (username !== user.username)
+  const isValidUser = model.checkUser(username, password);
+
+  if (!isValidUser)
     return res.status(401).json({
       error: "invalid username or password",
     });
 
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-
-  if (!isPasswordValid)
-    return res.status(401).json({
-      error: "invalid username or password",
-    });
-
-  const token = jwt.sign(
-    { username: user.username },
-    process.env.BENVIS_JWTOKEN
-  );
+  const token = jwt.sign({ username }, process.env.BENVIS_JWTOKEN);
 
   return res
     .header(
