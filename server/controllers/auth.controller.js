@@ -9,7 +9,7 @@ function getLogin(req, res) {
 async function login(req, res) {
   const { username, password } = req.body;
 
-  const isValidUser = model.checkUser(username, password);
+  const isValidUser = await model.checkUser(username, password);
 
   if (!isValidUser)
     return res.status(401).json({
