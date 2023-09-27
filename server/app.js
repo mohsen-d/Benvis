@@ -5,6 +5,7 @@ var hbs = require("hbs");
 const app = express();
 
 hbs.localsAsTemplateData(app);
+hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 (async () => {
   await require("./startup/db.startup")();
