@@ -12,6 +12,7 @@ async function getSettings(req, res) {
 async function updateSettings(req, res) {
   const newSettings = req.body;
   await model.updateSettings(newSettings);
+  req.app.locals.siteSettings = newSettings;
   res.json(newSettings);
 }
 
