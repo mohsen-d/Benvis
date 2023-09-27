@@ -8,12 +8,13 @@
 a.post-title {
   text-decoration: none;
 }
-.back-link {
-  margin-left: -32px;
-}
 
 @media (min-width: 576px) {
   .post-content {
     font-size: 1.25rem !important;
+  }
+
+  .back-link {
+    margin-left: -32px;
   }
 }
