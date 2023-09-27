@@ -11,3 +11,9 @@ a.post-title {
 .back-link {
   margin-left: -32px;
 }
+
+@media (min-width: 576px) {
+  .post-content {
+    font-size: 1.25rem !important;
+  }
+}

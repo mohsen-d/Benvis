@@ -6,30 +6,38 @@
     <div class="container min-vh-100 d-flex flex-column">
       <div class="row">
         <div
-          class="col-6 offset-3 mb-5 mt-3 pb-1 border-bottom border-secondary-subtle"
+          class="col-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3 mb-2 mb-lg-5 mt-3 pb-1"
         >
-          <h1 class="site-title d-inline px-1 pb-1">{{@siteSettings.title}}</h1>
-          <h2
-            class="text-body-tertiary fst-italic fw-light fs-3 mt-1"
-          >{{@siteSettings.description}}</h2>
-          {{#if @siteSettings.landingPage}}
+          <div class="overflow-auto border-bottom border-secondary-subtle">
+            <h1 class="site-title d-inline px-1 pb-1">{{@siteSettings.title}}</h1>
+            <h2
+              class="text-body-tertiary fst-italic fw-light fs-3 mt-1"
+            >{{@siteSettings.description}}</h2>
             <a
-              href="/"
-              class="float-end text-body-tertiary text-decoration-none"
-            >About Me</a>
-          {{/if}}
+              href="/posts"
+              class="float-left d-sm-none text-body-tertiary fs-2"
+            >
+              <i class="bi bi-box-arrow-in-left"></i>
+            </a>
+            {{#if @siteSettings.landingPage}}
+              <a
+                href="/"
+                class="float-end text-body-tertiary mt-2 mt-sm-0 text-decoration-none"
+              >About Me</a>
+            {{/if}}
+          </div>
         </div>
       </div>
       <div class="row flex-grow-1">
-        <div class="col-6 offset-3">
+        <div class="col-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
           {{{body}}}
         </div>
       </div>
       <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
           <footer>
             <p
-              class="text-center mt-2 pt-4 mb-4 border-top border-body-tertiary text-body-tertiary"
+              class="text-center mt-1 mt-lg-2 pt-2 pt-lg-4 mb-2 mb-lg-4 border-top border-body-tertiary text-body-tertiary"
             >{{@siteSettings.footer}}</p>
           </footer>
         </div>
