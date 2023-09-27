@@ -26,6 +26,7 @@ module.exports = function (app) {
     helmet({
       contentSecurityPolicy: {
         directives: {
+          "img-src": ["*"],
           "script-src-attr": ["'unsafe-inline'"],
           "script-src": [
             "'self'",
