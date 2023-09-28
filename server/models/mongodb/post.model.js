@@ -24,7 +24,7 @@ const Post = mongoose.model(
 );
 
 async function getPosts() {
-  const posts = await Post.find();
+  const posts = await Post.find().sort({ date: "desc" });
   posts.forEach((p) => (p.id = p._id));
   return posts;
 }

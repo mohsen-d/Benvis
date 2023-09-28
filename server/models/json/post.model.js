@@ -1,8 +1,8 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const dataPath = path.join(__dirname, "..", "data", "posts.json");
-const postsPath = path.join(__dirname, "..", "data", "posts");
+const dataPath = path.join(__dirname, "..", "..", "data", "posts.json");
+const postsPath = path.join(__dirname, "..", "..", "data", "posts");
 
 (async function createFile() {
   const fileContent = {
@@ -28,11 +28,13 @@ async function getPosts() {
 
   const posts = JSON.parse(data).posts;
 
-  return posts.map((p) => {
-    const id = Object.keys(p)[0];
-    const [title, brief] = p[id].split("##");
-    return { id, title, brief };
-  });
+  return posts
+    .map((p) => {
+      const id = Object.keys(p)[0];
+      const [title, brief] = p[id].split("##");
+      return { id, title, brief };
+    })
+    .sort((a, b) => b.id - a.id);
 }
 
 async function getPost(id) {
