@@ -8,6 +8,15 @@
 a.post-title {
   text-decoration: none;
 }
+blockquote {
+  border-left: solid 6px #cfcfcf;
+  padding-left: 5px;
+  background-color: #f7f7f9;
+}
+pre {
+  background-color: #f7f7f9;
+  padding: 10px;
+}
 
 @media (min-width: 576px) {
   .post-content {
