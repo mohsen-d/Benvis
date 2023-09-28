@@ -41,7 +41,9 @@ module.exports = function (app) {
 
   app.use(cookieParser());
   app.use(express.json());
-  app.use(express.static(path.join(__dirname, "..", "public")));
+  app.use(express.static(path.join(__dirname, "..", "public/scripts")));
+  app.use(express.static(path.join(__dirname, "..", "public/styles")));
+  app.use(express.static(path.join(__dirname, "..", "public/images")));
 
   app.use("/admin/", require("../middlewares/auth.middleware"));
 
