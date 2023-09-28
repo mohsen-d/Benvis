@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const dataPath = path.join(__dirname, "..", "data", "settings.json");
+const dataPath = path.join(__dirname, "..", "..", "data", "settings.json");
 
 (async function createFile() {
   const fileContent = {

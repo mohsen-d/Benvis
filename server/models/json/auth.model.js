@@ -2,15 +2,15 @@ const fs = require("fs").promises;
 const path = require("path");
 const bcrypt = require("bcrypt");
 
-const dataPath = path.join(__dirname, "..", "data", "auth.json");
+const dataPath = path.join(__dirname, "..", "..", "data", "auth.json");
 
 (async function createFile() {
-  const passwordHash = await passwordHash("");
+  const password = await passwordHash("");
 
   const fileContent = {
     creds: {
       username: "admin",
-      password: passwordHash,
+      password: password,
     },
   };
 
