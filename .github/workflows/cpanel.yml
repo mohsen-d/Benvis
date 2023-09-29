@@ -1,0 +1,16 @@
+name: CPanel Deploy Workflow
+on:
+  push:
+    branches: [master]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pinkasey/cpanel-deploy-action@v1.1.2
+        with:
+          hostname: "${{ secrets.CPANEL_HOST }}"
+          repository_root: "${{ secrets.CPANEL_REPO }}"
+          branch: master
+          cpanel_token: "${{ secrets.CPANEL_TOKEN }}"
+          cpanel_username: "${{ secrets.CPANEL_USER }}"
