@@ -10,7 +10,7 @@ jobs:
       - uses: pinkasey/cpanel-deploy-action@v1.1.2
         with:
           hostname: "https://dorparasti.xyz"
-          repository_root: "/home2/dorparas/blog"
+          repository_root: "/home2/dorparas/repositories/Benvis"
           branch: master
           cpanel_token: "${{ secrets.CPANEL_TOKEN }}"
           cpanel_username: "dorparas"
