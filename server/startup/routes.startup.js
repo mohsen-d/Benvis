@@ -32,7 +32,7 @@ module.exports = function (app) {
             "'self'",
             "'unsafe-inline'",
             "https://cdn.quilljs.com/1.3.6/quill.min.js",
-            "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js",
+            "https://cdn.jsdelivr.net/",
           ],
         },
       },
