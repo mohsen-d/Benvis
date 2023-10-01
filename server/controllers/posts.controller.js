@@ -38,7 +38,7 @@ async function getPost(req, res) {
   try {
     post = await model.getPost(id);
   } catch (error) {
-    if (error.code === "ENOENT") {
+    if (error.code === "ENOENT" || error.kind === "ObjectId") {
       return res.redirect("/notfound");
     }
     throw error;
