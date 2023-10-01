@@ -56,7 +56,7 @@ module.exports = function (app) {
       break;
   }
 
-  app.get("*", (req, res) => {
-    res.render("404", { layout: "layouts/public" });
-  });
+  app.use(require("../routes/errors.route"));
+
+  app.use(require("../middlewares/error.middleware"));
 };
