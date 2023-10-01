@@ -8,6 +8,7 @@ hbs.localsAsTemplateData(app);
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 (async () => {
+  require("./startup/logging.startup")();
   await require("./startup/db.startup")();
   await require("./startup/settings.startup")(app);
   require("./startup/routes.startup")(app);
