@@ -3,15 +3,10 @@ on:
   push:
     branches: [master]
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - uses: pinkasey/cpanel-deploy-action@v1.1.2
         with:
           hostname: "https://dorparasti.xyz"
