@@ -11,6 +11,6 @@ module.exports = async function () {
     console.log(`Connected to ${conStr}...`);
   } else {
     const dataFolderPath = path.join(__dirname, "..", "data");
-    await fs.mkdir(dataFolderPath);
+    await fs.mkdir(dataFolderPath, { recursive: true });
   }
 };
