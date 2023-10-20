@@ -30,18 +30,22 @@
           {{/if}}
 
           {{#if info.bio}}
-            <div class="my-bio border-bottom py-3 px-2 px-lg-0">
+            <div class="my-bio py-3 px-2 px-lg-0">
               <p class="fs-5 fw-light text-secondary">{{info.bio}}</p>
-              <p>
-                <a
-                  href="/posts"
-                  class="fs-4 d-flex justify-content-center align-items-center text-decoration-none"
-                ><span>My Blog</span>
-                  <i class="bi bi-box-arrow-in-right pt-2 ps-1"></i></a></p>
             </div>
           {{/if}}
-
-          <div class="my-links fs-5 pt-3">
+          {{#if info.hasPosts}}
+            <p class="pb-3">
+              <a
+                href="/posts"
+                class="fs-4 d-flex justify-content-center align-items-center text-decoration-none"
+              >
+                <span>My Blog</span>
+                <i class="bi bi-box-arrow-in-right pt-2 ps-1"></i>
+              </a>
+            </p>
+          {{/if}}
+          <div class="my-links border-top w-100 text-center fs-5 pt-3">
             <ul class="list-inline">
               {{#if info.email}}
                 <li class="list-inline-item">

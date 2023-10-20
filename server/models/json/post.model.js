@@ -23,6 +23,14 @@ function getPostPath(id) {
   return path.join(__dirname, "..", "data", "posts", postFileName);
 }
 
+async function hasPosts() {
+  const data = await fs.readFile(dataPath, "utf-8");
+
+  const postsCount = JSON.parse(data).posts.length;
+
+  return postsCount > 0;
+}
+
 async function getPosts() {
   const data = await fs.readFile(dataPath, "utf-8");
 
@@ -92,4 +100,5 @@ module.exports = {
   addPost,
   deletePost,
   updatePost,
+  hasPosts,
 };

@@ -1,4 +1,5 @@
 const model = require(`../models/${process.env.BENVIS_DB}/about.model`);
+const postsModel = require(`../models/${process.env.BENVIS_DB}/post.model`);
 const { isAdminRoute } = require("../utils/misc");
 
 async function getInfo(req, res) {
@@ -10,6 +11,7 @@ async function getInfo(req, res) {
   if (!isAdminRoute(req)) {
     viewToRender = "about";
     layout = "";
+    info.hasPosts = await postsModel.hasPosts();
   }
 
   res.render(viewToRender, {
