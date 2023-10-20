@@ -11,7 +11,7 @@ const postsPath = path.join(__dirname, "..", "..", "data", "posts");
   };
 
   try {
-    await fs.mkdir(postsPath);
+    await fs.mkdir(postsPath, { recursive: true });
     await fs.writeFile(dataPath, JSON.stringify(fileContent, null, 2), {
       flag: "wx",
     });
@@ -20,7 +20,7 @@ const postsPath = path.join(__dirname, "..", "..", "data", "posts");
 
 function getPostPath(id) {
   const postFileName = `${id}.json`;
-  return path.join(__dirname, "..", "data", "posts", postFileName);
+  return path.join(postsPath, postFileName);
 }
 
 async function hasPosts() {
